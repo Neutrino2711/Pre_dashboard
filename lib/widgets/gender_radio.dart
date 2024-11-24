@@ -39,14 +39,18 @@ class GenderRadio extends StatelessWidget {
               
               activeColor: const Color(0xff0F3CC9),
             ),
-            Text(
-              gender,
-              style: TextStyle(
-                fontSize: screenWidth * 0.03,
-                fontWeight: FontWeight.w500,
-                color: selectedGender == gender
-                    ? const Color(0xff0F3CC9)
-                    : Colors.black,
+            Flexible(
+              child: Text(
+                gender,
+                style: TextStyle(
+                  fontSize: screenWidth * 0.03,
+                  fontWeight: FontWeight.w500,
+                  color: selectedGender == gender
+                      ? const Color(0xff0F3CC9)
+                      : Colors.black,
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
             ),
           ],
