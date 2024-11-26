@@ -91,40 +91,19 @@ class _Step1ContentWidgetState extends State<Step1ContentWidget> {
                           color: Colors.black,
                         ),
                       ),
-                      // TextSpan(
-                      //   text: '*',
-                      //   style: GoogleFonts.poppins(
-                      //     fontSize: screenHeight * 0.02,
-                      //     fontWeight: FontWeight.w500,
-                      //     color: const Color(0xff0F3CC9),
-                      //   ),
-                      // ),
+                      TextSpan(
+                        text: '*',
+                        style: GoogleFonts.poppins(
+                          fontSize: screenHeight * 0.02,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xff0F3CC9),
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.002),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GenderRadio(
-                      gender: 'Male',
-                      selectedGender: widget.selectedGender,
-                      onChanged: widget.onGenderChanged,
-                    ),
-                    SizedBox(width: screenHeight * 0.01),
-                    GenderRadio(
-                      gender: 'Female',
-                      selectedGender: widget.selectedGender,
-                      onChanged: widget.onGenderChanged,
-                    ),
-                    SizedBox(width: screenHeight * 0.01),
-                    GenderRadio(
-                      gender: 'Other',
-                      selectedGender: widget.selectedGender,
-                      onChanged: widget.onGenderChanged,
-                    ),
-                  ],
-                ),
+                GenderInput(widget: widget, screenHeight: screenHeight),
                 SizedBox(height: screenHeight * 0.02),
                 CustomTextField(
                   controller: widget.dobController,
@@ -182,6 +161,80 @@ class _Step1ContentWidgetState extends State<Step1ContentWidget> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class GenderInput extends StatelessWidget {
+  const GenderInput({
+    super.key,
+    required this.widget,
+    required this.screenHeight,
+  });
+
+
+  
+  final Step1ContentWidget widget;
+  final double screenHeight;
+
+
+  String? validateGender(String? gender) {
+    if (gender == null || gender.isEmpty) {
+      return 'Please select a gender.';
+    }
+    return null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FormField<String>(
+      initialValue: widget.selectedGender,
+      validator: validateGender,
+      builder: (field) {
+        return Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GenderRadio(
+                  gender: 'Male',
+                  selectedGender: field.value,
+                  onChanged: (value){
+                    field.didChange(value);
+                    widget.onGenderChanged(value);
+                  },
+                ),
+                SizedBox(width: screenHeight * 0.01),
+                GenderRadio(
+                  gender: 'Female',
+                  selectedGender: field.value,
+                  onChanged: (value){
+                    field.didChange(value);
+                    widget.onGenderChanged(value);
+                  },
+                ),
+                SizedBox(width: screenHeight * 0.01),
+                GenderRadio(
+                  gender: 'Other',
+                   selectedGender: field.value,
+                  onChanged: (value){
+                    field.didChange(value);
+                    widget.onGenderChanged(value);
+                  },
+                ),
+              ],
+            ),
+             if (field.hasError)
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  field.errorText!,
+                  style: TextStyle(color: Colors.red[900], fontSize: screenHeight*0.0125),
+                ),
+              ),
+          ],
+        );
+      }
     );
   }
 }

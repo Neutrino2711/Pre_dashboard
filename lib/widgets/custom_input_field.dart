@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class CustomInputField extends StatelessWidget {
   final String label;
+  final TextInputType? keyboardType;
 
   const CustomInputField({required this.label,
   required this.validator,
+   this.keyboardType,
    Key? key}) : super(key: key);
 
    final String? Function(String?)? validator;
@@ -34,8 +36,10 @@ class CustomInputField extends StatelessWidget {
         ),
         SizedBox(height: screenHeight * 0.01), // Responsive spacing
         TextFormField(
+          keyboardType: keyboardType,
           decoration: InputDecoration(
             hintText: label,
+            
             filled: false,
             fillColor: const Color(0xFFF1F4FF),
             border: OutlineInputBorder(

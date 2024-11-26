@@ -33,7 +33,7 @@ class CustomDropdownField extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: screenHeight * 0.01), // Responsive spacing
+        SizedBox(height: screenHeight * 0.01),
         DropdownButtonFormField<String>(
           items: [
             DropdownMenuItem(value: "1", child: Text(label)),
@@ -41,8 +41,8 @@ class CustomDropdownField extends StatelessWidget {
           onChanged: (value) {},
           decoration: InputDecoration(
             hintText: label,
-            filled: false,
-            fillColor: const Color(0xFFF1F4FF),
+            filled: true,
+            fillColor:  Colors.white,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(
                 screenHeight*0.01

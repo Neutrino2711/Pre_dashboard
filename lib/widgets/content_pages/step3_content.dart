@@ -61,6 +61,7 @@ class Step3Content extends StatelessWidget {
               },
               ),
               CustomInputField(label: "Select Year",
+                keyboardType: TextInputType.numberWithOptions(),
                 validator: (value) {
                 if(value == null || value.isEmpty)
                 {

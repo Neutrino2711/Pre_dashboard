@@ -285,14 +285,33 @@ class _RegisterScreenEducationalState extends State<RegisterScreenEducational> {
                             // {
                             
                             if (stepKeys[currentStep-1].currentState?.validate() ?? false) {
-                             
-                               setState(() {
+                              
+                              if(currentStep==2)
+                              {
+                                print("yeah here");
+                                if(shouldMove)
+                                {
+                                     setState(() {
                             // currentStep++;
                             _pageController.nextPage(
                               duration: const Duration(milliseconds: 500),
                               curve: Curves.easeInOut,
                             );
                           });
+                                }
+                              }
+                              else 
+                              {
+                                 setState(() {
+                            // currentStep++;
+                            _pageController.nextPage(
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeInOut,
+                            );
+                          });
+                              }
+
+                              
     } else {
       print('Please fill out all required fields.');
     }
