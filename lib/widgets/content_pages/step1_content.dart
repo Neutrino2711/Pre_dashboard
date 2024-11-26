@@ -192,6 +192,7 @@ class GenderInput extends StatelessWidget {
       validator: validateGender,
       builder: (field) {
         return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -203,6 +204,7 @@ class GenderInput extends StatelessWidget {
                     field.didChange(value);
                     widget.onGenderChanged(value);
                   },
+                  isError: field.hasError,
                 ),
                 SizedBox(width: screenHeight * 0.01),
                 GenderRadio(
@@ -212,6 +214,7 @@ class GenderInput extends StatelessWidget {
                     field.didChange(value);
                     widget.onGenderChanged(value);
                   },
+                  isError: field.hasError,
                 ),
                 SizedBox(width: screenHeight * 0.01),
                 GenderRadio(
@@ -220,16 +223,19 @@ class GenderInput extends StatelessWidget {
                   onChanged: (value){
                     field.didChange(value);
                     widget.onGenderChanged(value);
+
                   },
+                  isError: field.hasError,
                 ),
               ],
             ),
              if (field.hasError)
               Padding(
-                padding: const EdgeInsets.only(top: 8.0),
+                padding: EdgeInsets.only(top: screenHeight * 0.01,left: screenHeight * 0.02),
                 child: Text(
                   field.errorText!,
-                  style: TextStyle(color: Colors.red[900], fontSize: screenHeight*0.0125),
+                  style: GoogleFonts.poppins(color: Colors.red[900], fontSize: screenHeight*0.014),
+                  
                 ),
               ),
           ],

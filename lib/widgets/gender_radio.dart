@@ -6,12 +6,15 @@ class GenderRadio extends StatelessWidget {
   final String gender;
   final String? selectedGender;
   final ValueChanged<String?> onChanged;
+  final isError;
 
   const GenderRadio({
     super.key,
     required this.gender,
     this.selectedGender,
     required this.onChanged,
+    required this.isError,
+
   });
 
   @override
@@ -24,7 +27,7 @@ class GenderRadio extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(screenWidth * 0.025),
           border: Border.all(
-            color: AppColors.textField,
+            color: isError?Colors.red[900]!: AppColors.textField,
           ),
           color: Colors.white,
         ),
