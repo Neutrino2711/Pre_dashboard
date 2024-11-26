@@ -20,6 +20,7 @@ class GenderRadio extends StatelessWidget {
     return Expanded(
       child: Container(
         height: MediaQuery.of(context).size.width * 0.1,
+        // width: screenWidth*1,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(screenWidth * 0.025),
           border: Border.all(
@@ -33,9 +34,9 @@ class GenderRadio extends StatelessWidget {
               value: gender,
               groupValue: selectedGender,
               onChanged: onChanged,
-              overlayColor: WidgetStatePropertyAll(
-                Colors.white
-              ),
+              // overlayColor: WidgetStatePropertyAll(
+              //   Colors.white
+              // ),
               
               activeColor: const Color(0xff0F3CC9),
             ),
@@ -52,6 +53,7 @@ class GenderRadio extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
+              
             ),
           ],
         ),
